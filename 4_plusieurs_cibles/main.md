@@ -8,7 +8,7 @@ Vous avez déja plusieurs cibles, au minimum le poste de dev et la prod.
 !SLIDE
 ## La tactique
 
-Une des tactiques est de n'avoir aucunes références à un host dans Les playbooks,
+Une des tactiques est de n'avoir aucune référence à un host dans Les playbooks,
 et autant d'inventaires que de cibles.
 
 Les inventaires contiennent les variables.
@@ -32,12 +32,12 @@ Les rôles doivent être autonomes.
 
 Un playbook peut être joué et rejoué sans risque.
 
-En confiant à Ansible la charge de ne toucher que ce qu'il y a à mofier, on gagne en confiance et en stress.
+En confiant à Ansible la charge de ne toucher que ce qu'il y a à modifier, on gagne en confiance et en stress.
 
 !SLIDE
 ## Actions dangereuses
 
-Ajouter un esclave a une base de donnée est il idempotant?
+Ajouter un esclave à une base de données est il idempotant?
 
 Oui.
 
@@ -54,12 +54,12 @@ Ansible se fiche bien de votre distribution.
 
 Conçu sur RedHat, je l'utilise sans soucis sous Debian.
 
-Les systèmes les plus exotiques ont leur module, et les BSD ne sont pas oubliés.
+Les systèmes les plus exotiques ont leur module, et les BSD ne sont pas oubliées.
 
 !SLIDE
 ## Packages
 
-Les modules utilisent avec *parcimonie* des paquets systèmes.
+Les modules utilisent avec *parcimonie* des paquets système.
 
 Il faut les installer explicitement avant d'utiliser le module.
 
@@ -68,7 +68,7 @@ Certains modules sont trop vieux dans les distributions conservatrices. Pymongo 
 !SLIDE
 ## Recettes agnostiques
 
-Il est utopique de penser trouver des roles tout pret, fonctionnant sur toutes les plateformes.
+Il est utopique de penser trouver des roles tout prêts, fonctionnants sur toutes les plateformes.
 
 Il est crédible d'écrire ses recettes pour gérer quelques OS sans heurts.
 
