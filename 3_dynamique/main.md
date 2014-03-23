@@ -5,10 +5,10 @@ Ansible commence une lecture par la collecte des faits :
 il récupère un longue liste d'informations sur chacune des machines concernées.
 
 Ces valeurs, comme les adresses IP des différentes interfaces, le nombre de coeurs,
-ou la quantité de RAM, permettent d'utilisé des valeurs en dur, mais de manière dynamique.
+ou la quantité de RAM, permettent d'utiliser des valeurs en dur, mais de manière dynamique.
 
-Il est possible d'utiliser les attributs de la machine concerné par la lecture,
-mais aussi les autres faisant partis du groupe.
+Il est possible d'utiliser les attributs de la machine concernée par la lecture,
+mais aussi les autres faisant partie du groupe.
 
 !SLIDE
 # Sans états
@@ -26,4 +26,4 @@ Ansible essaye de ne pas agir, il dépense beaucoup d'énergie à simuler une ac
 
 Le système de notification participe à cette approche.
 
-Certaines scripts initd et certaines applications s'avère être bugués et pourrisse le coté sans surprise d'Ansible.
+Certains scripts initd et certaines applications s'avèrent être bugués et pourrissent le coté sans surprise d'Ansible.
