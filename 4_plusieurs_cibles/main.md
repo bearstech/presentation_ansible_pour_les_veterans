@@ -8,11 +8,12 @@ Vous avez déja plusieurs cibles, au minimum le poste de dev et la prod.
 !SLIDE
 ## La tactique
 
-Les playbooks ne doivent avoir aucunes références à un host.
-
-Autant d'inventaires que de cibles.
+Une des tactiques est de n'avoir aucunes références à un host dans Les playbooks,
+et autant d'inventaires que de cibles.
 
 Les inventaires contiennent les variables.
+
+Attention à maintenir la cohérence des variables entre les différents inventaires.
 
 !SLIDE
 # Size does matter
@@ -21,8 +22,8 @@ Ansible n'est pas super véloce.
 
 Il faut pouvoir simplifier le scénario :
 
- * En découpant le playbook, un sommaire "include" les autres
- * Les tags permettent de cibler précisément
+ * En découpant le playbook, un sommaire "include" les autres.
+ * Les tags permettent de cibler précisément.
 
 Les rôles doivent être autonomes.
 
