@@ -9,7 +9,7 @@ Les variables amènent la souplesse dans les playbooks, mais aussi des surprises
 !SLIDE
 ### Défaut
 
-Les variables peuvent être complexe, mais attention, lors d'un merge de source, les clefs n'ont qu'un seul niveau.
+Les variables peuvent être complexes, mais attention, lors d'un merge de source, les clefs n'ont qu'un seul niveau.
 
 ```
 toto:
@@ -34,7 +34,7 @@ La rigueur des modules permettent d'avoir confiance dans leurs actions.
 
 Rien ne garanti la cohérence des variables, surtout si il y a plusieurs cibles avec chacune leur jeu de variables.
 
-Il est sage d'avoir queqlues assertions, comme la possibilité à un client de se connecter à son serveur depuis chacun des noeuds possibles.
+Il est sage d'avoir quelques assertions, comme la possibilité à un client de se connecter à son serveur depuis chacun des noeuds possibles.
 
 !SLIDE
 ### Lookup
@@ -59,13 +59,13 @@ Fortement recommandé pour les playbooks open source.
 !SLIDE
 ## Séquentiel
 
-Le traitement des actions se fait de manière séquentiel.
+Le traitement des actions se fait de manière séquentielle.
 
 Le résultat est prévisible, mais mou.
 
 Pour les bases de données, il est plus simple de générer une liste de commandes avec un *template*, puis de demander son éxécution.
 
-Les actions asynchrone, qui rendent la main avant d'avoir agis sont une malédiction.
+Les actions asynchrones, qui rendent la main avant d'avoir agi sont une malédiction.
 
 !SLIDE
 # Gabarits
