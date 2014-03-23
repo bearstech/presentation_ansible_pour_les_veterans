@@ -1,0 +1,11 @@
+{
+    "title": "Ansible pour les vétérans",
+    "theme": "memories",
+    "duration": 20,
+    "sections": {
+        "0_presentation": "",
+        "1_main": "Philosophie",
+        "2_previsible": "Prévisible",
+        "3_plusieurs_cibles": "Plusieurs cibles"
+    }
+}
