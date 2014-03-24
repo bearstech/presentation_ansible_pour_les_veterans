@@ -1,7 +1,4 @@
 !SLIDE
-# Prévisible
-
-!SLIDE
 ## Variables
 
 Les variables amènent la souplesse dans les playbooks, mais aussi des surprises.
