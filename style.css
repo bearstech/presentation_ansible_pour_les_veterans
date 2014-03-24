@@ -8,6 +8,11 @@ body {
     text-shadow: none;
 }
 
+
+.slide em {
+    font-style: italic;
+}
+
 #slide5 {
     text-align: center;
 }
