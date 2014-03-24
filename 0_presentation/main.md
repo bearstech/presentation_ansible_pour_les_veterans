@@ -1,5 +1,10 @@
+!SLIDE
 # Mathieu Lecarme
 
-*athoune* sur github, twitter et IRC
+## athoune
+
+ * github
+ * twitter
+ * IRC #freenode
 
 http://blog.bearstech.com
