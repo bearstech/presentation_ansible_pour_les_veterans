@@ -28,7 +28,7 @@ Il faut pouvoir simplifier le scénario :
 Les rôles doivent être autonomes.
 
 !SLIDE
-# Idempotances
+# Idempotence
 
 Un playbook peut être joué et rejoué sans risque.
 
@@ -37,7 +37,7 @@ En confiant à Ansible la charge de ne toucher que ce qu'il y a à modifier, on 
 !SLIDE
 ## Actions dangereuses
 
-Ajouter un esclave à une base de données est il idempotant?
+Ajouter un esclave à une base de données est il idempotent?
 
 Oui.
 
@@ -68,7 +68,7 @@ Certains modules sont trop vieux dans les distributions conservatrices. Pymongo 
 !SLIDE
 ## Recettes agnostiques
 
-Il est utopique de penser trouver des roles tout prêts, fonctionnants sur toutes les plateformes.
+Il est utopique de penser trouver des rôles tout prêts, fonctionnant sur toutes les plateformes.
 
 Il est crédible d'écrire ses recettes pour gérer quelques OS sans heurts.
 

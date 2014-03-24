@@ -26,4 +26,4 @@ Ansible essaye de ne pas agir, il dépense beaucoup d'énergie à simuler une ac
 
 Le système de notification participe à cette approche.
 
-Certains scripts initd et certaines applications s'avèrent être bugués et pourrissent le coté sans surprise d'Ansible.
+Certains scripts initd et certaines applications s'avèrent bugués et pourrissent le coté sans surprise d'Ansible.
