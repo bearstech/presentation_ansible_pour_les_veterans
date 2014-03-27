@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Ansible pour les vétérans</title>
+      <link rel="stylesheet" href="css/fonts.css">
+      <link rel="stylesheet" href="css/slideshow.css">
+      <link rel="stylesheet" href="css/theme.css">
+      <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/pygments/solarized.css">
+    <script src="js/prefixfree.min.js"></script>
+  </head>
+  <body data-duration="20">
+    <section>
+      <header class="slide">
+        <h1>Ansible pour les vétérans</h1>
+        <h2></h2>
+      </header>
+    </section>
+      <section>
+        <header class="slide">
+          <h1></h1>
+        </header>
+          <section class="slide ">
+            <h1>Mathieu Lecarme</h1>
+
+<h2>athoune</h2>
+
+<ul>
+<li>github</li>
+<li>twitter</li>
+<li>IRC #freenode</li>
+</ul>
+
+<p><a href="http://blog.bearstech.com">http://blog.bearstech.com</a></p>
+
+          </section>
+      </section>
+      <section>
+        <header class="slide">
+          <h1>Philosophie</h1>
+        </header>
+          <section class="slide ">
+            <p><img src="vet.jpg" alt="Hockeyeur gardien"></p>
+
+          </section>
+          <section class="slide ">
+            <h1>Approche Déscriptitive</h1>
+
+<p>Ansible a une approche déscriptive, orthogonale à la notion de script.
+Les boucles et les condtions sont possibles, mais restent rare.
+Les playbooks sont volontairement linéaires et verbeux.</p>
+
+          </section>
+          <section class="slide ">
+            <h1>Souplesse et rigueur</h1>
+
+<p>Ansible à une approche implicite, déscriptive et séquentielle.</p>
+
+          </section>
+          <section class="slide ">
+            <h2>Les modules</h2>
+
+<p>La plupart des modules sont paraphrasables par une "command".</p>
+
+<p>On commence souvent par une version simple, un peu crado, puis dans une seconde passe, on affine en utilisant la commande adéquate.</p>
+
+<p>Un gros effort est fait pour que les commandes de bases soient cohérentes et homogènes.</p>
+
+          </section>
+          <section class="slide ">
+            <h3>Shell vs command</h3>
+
+<p><em>shell</em> et <em>raw</em> sont là pour décoincer la situation, mais elles sont mauvaises pour le karma.</p>
+
+<p><em>command</em> est lui tout à fait légitime, par contre.</p>
+
+<p>Attention à bien préciser le <em>creates</em> pour limiter le nombre d'actions.</p>
+
+          </section>
+          <section class="slide ">
+            <h2>Les playbooks</h2>
+
+<p>Ansible est trés libéral sur l'organisation du playbook.
+La chronologie traditionnelle est :</p>
+
+<ul>
+<li>Un playbook kilométrique</li>
+<li>Redistribution vers de multiples rôles</li>
+<li>Découpage en plusieurs playbook et un sommaire</li>
+<li>Utilisation avancé, les includes conditionnels, les tags</li>
+</ul>
+
+          </section>
+          <section class="slide ">
+            <h2>Les inventaires</h2>
+
+<p>Même souplesse au niveau des inventaires.</p>
+
+<p>Les groupes permettent d'anonymiser un playbook.</p>
+
+<p>Les groupes acceptent les opérations booléennes.</p>
+
+          </section>
+      </section>
+      <section>
+        <header class="slide">
+          <h1>Prévisible</h1>
+        </header>
+          <section class="slide ">
+            <h2>Variables</h2>
+
+<p>Les variables amènent la souplesse dans les playbooks, mais aussi des surprises.</p>
+
+          </section>
+          <section class="slide ">
+            <h3>Défaut</h3>
+
+<p>Les variables peuvent être complexes, mais attention, lors d'un merge de source, les clefs n'ont qu'un seul niveau.</p>
+<pre><code class="">toto:
+  version: 1.2.3
+  name: bob</code></pre>
+<p>plus</p>
+<pre><code class="">toto:
+  name: casimir</code></pre>
+<p>donne
+<code>
+toto.version == None
+</code></p>
+
+          </section>
+          <section class="slide ">
+            <h3>Assertions</h3>
+
+<p>La rigueur des modules permettent d'avoir confiance dans leurs actions.</p>
+
+<p>Rien ne garanti la cohérence des variables, surtout si il y a plusieurs cibles avec chacune leur jeu de variables.</p>
+
+<p>Il est sage d'avoir quelques assertions, comme la possibilité à un client de se connecter à son serveur depuis chacun des noeuds possibles.</p>
+
+          </section>
+          <section class="slide ">
+            <h3>Lookup</h3>
+
+<p>La fonctionnalité de <em>lookup</em> permet de récupérer des variables.</p>
+
+<p>Les usages sont divers :</p>
+
+<ul>
+<li>Contenu d'un fichier</li>
+<li>Résultat d'une commande</li>
+<li>Interrogation d'un DNS</li>
+<li>Utilisation de Redis, comme base clef/valeur</li>
+<li>…</li>
+</ul>
+
+          </section>
+          <section class="slide ">
+            <h3>Vault</h3>
+
+<p>Il est possible de ranger les variables sensibles (comme les mots de passe) dans un troussau.</p>
+
+<p>Fortement recommandé pour les playbooks open source.</p>
+
+          </section>
+          <section class="slide ">
+            <h2>Séquentiel</h2>
+
+<p>Le traitement des actions se fait de manière séquentielle.</p>
+
+<p>Le résultat est prévisible, mais mou.</p>
+
+<p>Pour les bases de données, il est plus simple de générer une liste de commandes avec un <em>template</em>, puis de demander son éxécution.</p>
+
+<p>Les actions asynchrones, qui rendent la main avant d'avoir agi sont une malédiction.</p>
+
+          </section>
+          <section class="slide ">
+            <h1>Gabarits</h1>
+
+<p>Jinja2 couvre beaucoup de besoins, mais il peut y avoir quelques surprises.</p>
+
+<ul>
+<li>Collision de syntaxe avec un fichier que l'on vient de voler</li>
+<li>Debug un peu laborieux quand on découvre une nouvelle fonctionnalité de Jinja2</li>
+<li>Python hait le monkey patching, les actions sur les variables seront des filtres, et Ansible en propose quelques un.</li>
+<li>Il est possible d'ajouter des extensions, comme le très pratique <em>do</em></li>
+</ul>
+
+          </section>
+      </section>
+      <section>
+        <header class="slide">
+          <h1>Dynamique</h1>
+        </header>
+          <section class="slide ">
+            <h1>Facts</h1>
+
+<p>Ansible commence une lecture par la collecte des faits :
+il récupère un longue liste d'informations sur chacune des machines concernées.</p>
+
+<p>Ces valeurs, comme les adresses IP des différentes interfaces, le nombre de coeurs,
+ou la quantité de RAM, permettent d'utiliser des valeurs en dur, mais de manière dynamique.</p>
+
+<p>Il est possible d'utiliser les attributs de la machine concernée par la lecture,
+mais aussi les autres faisant partie du groupe.</p>
+
+          </section>
+          <section class="slide ">
+            <h1>Sans états</h1>
+
+<p>Ansible ne conserve pas d'états, ce qui permet d'intervenir à la main sur les machines sans trop de risques.</p>
+
+<p>Une lecture commence par la collecte des faits, et les taches font de même.</p>
+
+<p>Un bon playbook ne doit pas avoir de prérequis, il construit en état, sans a priori sur son état actuel.</p>
+
+          </section>
+          <section class="slide ">
+            <h1>Agir par le non-agir</h1>
+
+<p>Ansible essaye de ne pas agir, il dépense beaucoup d'énergie à simuler une action pour savoir si ça changerait quelques chose de l'appliquer.</p>
+
+<p>Le système de notification participe à cette approche.</p>
+
+<p>Certains scripts initd et certaines applications s'avèrent être bugués et pourrissent le coté sans surprise d'Ansible.</p>
+
+          </section>
+      </section>
+      <section>
+        <header class="slide">
+          <h1>Plusieurs cibles</h1>
+        </header>
+          <section class="slide ">
+            <h1>Plusieurs cibles</h1>
+
+<p>Votre archi va évoluer : les services vont être répartis différement, des noeuds vont être ajoutés.</p>
+
+<p>Vous avez déja plusieurs cibles, au minimum le poste de dev et la prod.</p>
+
+          </section>
+          <section class="slide ">
+            <h2>La tactique</h2>
+
+<p>Une des tactiques est de n'avoir aucune référence à un host dans Les playbooks,
+et autant d'inventaires que de cibles.</p>
+
+<p>Les inventaires contiennent les variables.</p>
+
+<p>Attention à maintenir la cohérence des variables entre les différents inventaires.</p>
+
+          </section>
+          <section class="slide ">
+            <h1>Size does matter</h1>
+
+<p>Ansible n'est pas super véloce.</p>
+
+<p>Il faut pouvoir simplifier le scénario :</p>
+
+<ul>
+<li>En découpant le playbook, un sommaire "include" les autres.</li>
+<li>Les tags permettent de cibler précisément.</li>
+</ul>
+
+<p>Les rôles doivent être autonomes.</p>
+
+          </section>
+          <section class="slide ">
+            <h1>Idempotances</h1>
+
+<p>Un playbook peut être joué et rejoué sans risque.</p>
+
+<p>En confiant à Ansible la charge de ne toucher que ce qu'il y a à modifier, on gagne en confiance et en stress.</p>
+
+          </section>
+          <section class="slide ">
+            <h2>Actions dangereuses</h2>
+
+<p>Ajouter un esclave à une base de données est il idempotant?</p>
+
+<p>Oui.</p>
+
+<p>Doit on le faire à chaque fois?</p>
+
+<p>Non.</p>
+
+<p>Il faut un playbook par action longue et/ou dangereuse.</p>
+
+          </section>
+          <section class="slide ">
+            <h1>Agnostique</h1>
+
+<p>Ansible se fiche bien de votre distribution.</p>
+
+<p>Conçu sur RedHat, je l'utilise sans soucis sous Debian.</p>
+
+<p>Les systèmes les plus exotiques ont leur module, et les BSD ne sont pas oubliées.</p>
+
+          </section>
+          <section class="slide ">
+            <h2>Packages</h2>
+
+<p>Les modules utilisent avec <em>parcimonie</em> des paquets système.</p>
+
+<p>Il faut les installer explicitement avant d'utiliser le module.</p>
+
+<p>Certains modules sont trop vieux dans les distributions conservatrices. Pymongo dans Debian.</p>
+
+          </section>
+          <section class="slide ">
+            <h2>Recettes agnostiques</h2>
+
+<p>Il est utopique de penser trouver des roles tout prêts, fonctionnants sur toutes les plateformes.</p>
+
+<p>Il est crédible d'écrire ses recettes pour gérer quelques OS sans heurts.</p>
+
+          </section>
+          <section class="slide ">
+            <h1>Actions en ping-pong</h1>
+
+<p>Certaines actions nécessitent des allers-retours, mise en place d'un maître, puis connexion de son esclave.</p>
+
+<p>Ansible propose la notion de <em>délégation</em> pour ça.</p>
+
+<p>Il est sage d'utiliser des assertions, avec <em>wait_for</em>, par exemple, ou les attributs <em>until</em> et <em>retries</em>.</p>
+
+          </section>
+      </section>
+      <section>
+        <header class="slide">
+          <h1>Configurations</h1>
+        </header>
+          <section class="slide ">
+            <h1>ansible.cfg</h1>
+
+<p>Ce fichier de configuration est une arme secrète.</p>
+
+<p>Il permet de rationnaliser de d'homogénéiser l'utilisation d'Ansible.</p>
+
+<p>Certains réglages sont pointus et anecdotiques, d'autres importants, comme :</p>
+
+<ul>
+<li>Transport, le moteur SSH utilisé.</li>
+<li>Les plugins utilisés (dont les extensions Jinja2).</li>
+<li>L'utilisateur par défaut.</li>
+<li>…</li>
+</ul>
+
+          </section>
+      </section>
+      <script src="js/prefixfree.min.js"></script>
+      <script src="js/slideshow.js"></script>
+    <script>slideshow = new SlideShow();</script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+body {
+    color: #444444;
+    background-color: white;
+    font-weight: 400;
+}
+
+.slide {
+    text-shadow: none;
+}
+
+
+.slide em {
+    font-style: italic;
+}
+
+#slide5 {
+    text-align: center;
+}
+
